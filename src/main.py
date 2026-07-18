@@ -70,9 +70,13 @@ def draw_hud(frame, angle, direction):
 
     return frame
 
+import platform
 
 def main():
-    cap = cv2.VideoCapture(CAMERA_INDEX, cv2.CAP_MSMF)
+    if platform.system() == "Windows":
+        cap = cv2.VideoCapture(CAMERA_INDEX, cv2.CAP_MSMF)
+    else:
+        cap = cv2.VideoCapture(CAMERA_INDEX)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     cap.set(cv2.CAP_PROP_FPS, 30)
